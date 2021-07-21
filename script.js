@@ -1,4 +1,20 @@
+function searchbox() {
+  const searchcontainer = document.createElement("div");
+  searchcontainer.className = "search-container";
+       searchcontainer.innerHTML =   `<h1 class = "header"> Welcome to Anime Website</h1>
+       <p class = "description">Search for your favourite animes at a single click</p></br>
 
+       <input class='new-anime-name' placeholder='Enter Anime Name eg."Fate"'/>
+          <button class="submit-animes" onclick="getanimes()"> Search </button>
+          <button class="sort-animes" onclick="sortanimes()"> Sort by imdb rating </button>
+          `;
+          
+          document.body.append(searchcontainer);
+          
+}
+
+
+          
 function loadanimes(animes) {
     const animeList = document.createElement("div");
     animeList.className = "anime-list";
@@ -26,8 +42,9 @@ function loadanimes(animes) {
   
   
   async function getanimes() {
-    try {
-    const title = document.querySelector(".new-anime-name").value;
+    
+    try{
+      const title = document.querySelector(".new-anime-name").value;
     const data = await fetch(
       `https://api.jikan.moe/v3/search/anime?q=${title}`,
       {
@@ -37,18 +54,26 @@ function loadanimes(animes) {
     
       const animejson = await data.json();
     const animes = animejson.results;
-    console.log(animes);
+    localStorage.setItem("searchedanime",JSON.stringify(animes));
     refreshanimes();
     loadanimes(animes);
+    }
 
-    }
-    catch{
-      alert("enter valid anime name/check connection")
-    }
+   catch{
+     alert("enter valid anime name? check your internet connection")
+
+   }
    
   }
 
-
+function sortanimes() {
+  const searchedanime = JSON.parse(localStorage.getItem("searchedanime"));
+  console.log(searchedanime);
+ var sortedanimes = searchedanime.sort((a,b) => b.score - a.score);
+  refreshanimes();
+    loadanimes(sortedanimes);
+    localStorage.removeItem("searchedanime");
+}
 
   function refreshanimes() {
     // animeList
