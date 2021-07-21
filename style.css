@@ -8,11 +8,18 @@
   color: orange;
 }
 
-
+.header{
+  top:10px;
+  color: rgb(102, 221, 78);
+}
+.description{
+  color: rgb(4, 63, 114);
+  font-size: 20px;
+}
 .anime-container {
 background-color: rgb(84, 88, 134);
   padding: 10px;
-  margin-bottom: 8px;
+  margin : 15px;
   border-radius: 16px;
   font-family: Poppins;
   display: flex;
@@ -34,7 +41,6 @@ body{
     
     background-color: rgb(84, 88, 134);
   padding: 10px;
-  margin: 8px 30px ;
   border-radius: 16px;
   font-family: Poppins;
 display: inline-flex;
@@ -78,9 +84,10 @@ button{
     color:rgb(36, 66, 0);
     border-radius: 8px;
     height: 33px;
-    width: 80px;
+    padding: 5px;
     
 }
+
 .new-anime-name{
     background-color: rgb(209, 196, 200);
     color:rgb(80, 110, 23);
