@@ -1,77 +1,87 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
-
-.content {
-  color: orchid;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&family=Noto+Sans+JP:wght@700&display=swap');
+body{
+  background-color: rgb(139, 139, 139);
+  font-family: 'Noto Sans JP', sans-serif;
+  
 }
-
-.anime-title {
-  color: orange;
+.header-inline {
+  display: inline-block;
 }
-
 .header{
   top:10px;
-  color: rgb(102, 221, 78);
+  color: rgb(57, 12, 116);
 }
 .description{
-  color: rgb(4, 63, 114);
-  font-size: 20px;
+  color: rgb(0, 78, 97);
+  font-size: 15px;
 }
+button{
+  background-color: rgb(122, 75, 101);
+  color:rgb(241, 228, 213);
+  border-radius: 8px;
+  height: 33px;
+  padding: 5px;
+  
+}
+
+.new-anime-name{
+  background-color: rgb(209, 196, 200);
+  color:rgb(80, 110, 23);
+  border-radius: 8px;
+  height: 25px;
+  padding: 2px 25px 2px 5px;
+}
+
+.anime-list {
+  margin-top: 30px;
+  display: grid;
+  font-family: 'Josefin Sans', sans-serif;
+  place-items: center;
+  background-color: rgb(0, 0, 0);
+  border-radius: 5px;
+}
+
+
 .anime-container {
-background-color: rgb(84, 88, 134);
+  background-color:rgb(254, 254, 255);
   padding: 10px;
-  margin : 15px;
-  border-radius: 16px;
-  font-family: Poppins;
-  display: flex;
+  margin : 12px;
+  border-radius: 10px;
+  max-width: 220px;
   justify-content: center;
   gap: 10px;
   transition: all 200ms;
-  opacity: 0.8;
-}
-body{
-    display: grid;
-  height: 100vh;
-  place-items: center;
-  background-color: rgb(165, 111, 136);
+  opacity: 0.9;
+  
 }
 
 
-@media (min-width: 400px) {
-  .anime-container {
-    
-    background-color: rgb(84, 88, 134);
-  padding: 10px;
-  border-radius: 16px;
-  font-family: Poppins;
-display: inline-flex;
-justify-content: center;
-
- 
-  max-width: 570px;
-  transition: all 200ms;
-  opacity: 0.8;
+.anime-title {
+  color: rgb(255, 115, 0);
+  font-weight: bold;
+  font-size: 18px;
 }
-  }
+
 .anime-score {
- color: rgb(7, 19, 29);
+ color: rgb(0, 140, 255);
 }
   .anime-type {
-color: rgb(18, 7, 36);
+color: rgb(255, 0, 0);
   }
   .anime-type span {
-    font-size: 30px;
-color: rgb(222, 241, 47);
+    font-size: 15px;
+color: rgb(234, 0, 255);
       }
 span {
-font-size: 30px;
-color: rgb(143, 212, 53);
+font-size: 20px;
+color: rgb(255, 0, 0);
 }
 .anime-time {
-  color: rgb(243, 204, 237);
+  color: rgb(0, 0, 0);
 }
 
 .anime-container:hover .anime-image {
-  border: 3px solid rgb(200, 209, 80);
+  border: 3px solid rgb(160, 40, 40);
 }
 
 .anime-container:hover {
@@ -79,24 +89,28 @@ color: rgb(143, 212, 53);
   opacity: 1;
 }
 
-button{
-    background-color: rgb(196, 214, 144);
-    color:rgb(36, 66, 0);
-    border-radius: 8px;
-    height: 33px;
-    padding: 5px;
-    
-}
 
-.new-anime-name{
-    background-color: rgb(209, 196, 200);
-    color:rgb(80, 110, 23);
-    border-radius: 8px;
-    height: 25px;
-    padding: 2px 25px 2px 5px;
-  }
+  
 
-  .anime-image {
-      border-radius: 8Px;
-  }
-
+  @media (min-width: 550px) {
+    .anime-list {
+      grid-template-columns: 1fr 1fr ;
+    }
+    }
+    @media (min-width: 810px) {
+      .anime-list {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      }
+  
+  
+  @media (min-width: 1070px) {
+    .anime-list {
+      grid-template-columns: 1fr 1fr 1fr 1fr ;
+    }
+    }
+    @media (min-width: 1150px) {
+      .anime-list {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      }
+      }
