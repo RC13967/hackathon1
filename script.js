@@ -1,12 +1,11 @@
 function searchbox() {
   const searchcontainer = document.createElement("div");
   searchcontainer.className = "search-container";
-       searchcontainer.innerHTML =   `<h1 class = "header"> Welcome to Anime Website</h1>
-       <p class = "description">Search for your favourite animes at a single click</p></br>
-
-       <input class='new-anime-name' placeholder='Enter Anime Name eg."Fate"'/>
-          <button class="submit-animes" onclick="getanimes()"> Search </button>
-          <button class="sort-animes" onclick="sortanimes()"> Sort by imdb rating </button>
+       searchcontainer.innerHTML =   `<div class = "header-inline"><h1 class = "header"> Welcome to Anime Website</h1>
+       <p class = "description">Search for your favourite animes at a single click</p></div>
+       <div class = "header-inline"><input class='new-anime-name' placeholder='Enter Anime Name eg."Fate"'/>
+       <button class="submit-animes" onclick="getanimes()"> Search </button>
+       <button class="sort-animes" onclick="sortanimes()"> Sort by imdb rating </button></div>
           `;
           
           document.body.append(searchcontainer);
@@ -24,13 +23,11 @@ function loadanimes(animes) {
   
       animeContainer.innerHTML = `
       <img class="anime-image"  src=${anime.image_url}> </img>
-      
-      <div>
-      <h1 class="anime-title">${anime.title}</h1>
-      <h3 class="anime-score">imdb rating - <span>${anime.score}</span></h3>
-        <h3 class="anime-type">type - <span>${anime.type}</span></h3>
+      <div class="anime-title">${anime.title}</div>
+      <div class="anime-score">imdb rating - <span>${anime.score}</span></div>
+        <div class="anime-type">type - <span>${anime.type}</span></div>
         <p class="anime-time" >${new Date(anime.start_date).toDateString()} - ${new Date(anime.end_date).toDateString()}</p>
-      </div>
+      
       `;
   
       animeList.append(animeContainer);
