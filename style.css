@@ -1,116 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&family=Noto+Sans+JP:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 body{
-  background-color: rgb(139, 139, 139);
-  font-family: 'Noto Sans JP', sans-serif;
-  
-}
-.header-inline {
-  display: inline-block;
-}
-.header{
-  top:10px;
-  color: rgb(57, 12, 116);
-}
-.description{
-  color: rgb(0, 78, 97);
-  font-size: 15px;
-}
-button{
-  background-color: rgb(122, 75, 101);
-  color:rgb(241, 228, 213);
-  border-radius: 8px;
-  height: 33px;
-  padding: 5px;
-  
-}
-
-.new-anime-name{
-  background-color: rgb(209, 196, 200);
-  color:rgb(80, 110, 23);
-  border-radius: 8px;
-  height: 25px;
-  padding: 2px 25px 2px 5px;
-}
-
-.anime-list {
-  margin-top: 30px;
-  display: grid;
-  font-family: 'Josefin Sans', sans-serif;
   place-items: center;
-  background-color: rgb(0, 0, 0);
-  border-radius: 5px;
+  background-color: rgb(161, 144, 152);
 }
 
-
-.anime-container {
-  background-color:rgb(254, 254, 255);
+.page-div {
+  position: sticky;
+  top: 0px;
+  background-color: rgb(170, 190, 172);
   padding: 10px;
-  margin : 12px;
-  border-radius: 10px;
-  max-width: 220px;
-  justify-content: center;
-  gap: 10px;
-  transition: all 200ms;
-  opacity: 0.9;
-  
+  border-radius: 8px;
+}
+.page-button {
+  padding: 7px;
+  margin: 2px ;
 }
 
-
-.anime-title {
-  color: rgb(255, 115, 0);
-  font-weight: bold;
-  font-size: 18px;
+.job-list {
+  margin-top: 50px;
 }
 
-.anime-score {
- color: rgb(0, 140, 255);
-}
-  .anime-type {
-color: rgb(255, 0, 0);
+.job-container {
+  background-color: rgb(209, 209, 228);
+    padding: 10px;
+    margin : 15px;
+    border-radius: 16px;
+    font-family: Poppins;
+    justify-content: center;
+    transition: all 200ms;
   }
-  .anime-type span {
-    font-size: 15px;
-color: rgb(234, 0, 255);
-      }
-span {
-font-size: 20px;
-color: rgb(255, 0, 0);
-}
-.anime-time {
-  color: rgb(0, 0, 0);
-}
-
-.anime-container:hover .anime-image {
-  border: 3px solid rgb(160, 40, 40);
-}
-
-.anime-container:hover {
-  transform: scale(1.05);
-  opacity: 1;
-}
-
-
   
+.job-title {
+  color: rgb(17, 0, 255);
+  font-weight: bolder;
+}
 
-  @media (min-width: 550px) {
-    .anime-list {
-      grid-template-columns: 1fr 1fr ;
-    }
-    }
-    @media (min-width: 810px) {
-      .anime-list {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-      }
-  
-  
-  @media (min-width: 1070px) {
-    .anime-list {
-      grid-template-columns: 1fr 1fr 1fr 1fr ;
-    }
-    }
-    @media (min-width: 1150px) {
-      .anime-list {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-      }
-      }
+.job-company {
+  color:rgb(255, 0, 149)
+}
+
+.job-created-time {
+  color: rgb(100, 35, 90);
+}
+
+.job-link{
+  color: rgb(255, 0, 0);
+}
+
+.job-description {
+  display:none;
+}
+
+button{
+    background-color: rgb(180, 25, 211);
+    color:rgb(238, 234, 183);
+    border-radius: 8px;
+    padding: 7px;
+    
+}
+.toggle-desc {
+  background-color: chocolate;
+  color:floralwhite
+}
+.new-job-name{
+    background-color: rgb(209, 196, 200);
+    color:rgb(80, 110, 23);
+    border-radius: 8px;
+    height: 25px;
+    padding: 2px 25px 2px 5px;
+  }
+
+
