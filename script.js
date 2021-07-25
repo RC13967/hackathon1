@@ -1,91 +1,80 @@
-function pagination (){
- const pagediv =  document.createElement("div");
- pagediv.className = "page-div";
- for(let i = 1;i<=100;i++){
-   const pagebutton = document.createElement("button");
-   pagebutton.className= "page-button"
-   pagebutton.innerHTML = i;
-   pagediv.append(pagebutton);
-   pagebutton.onclick = function (){
-     localStorage.setItem("clickedpage",i)
-     getjobs();
-   }
- }
- 
-document.body.append(pagediv);
+function searchbox() {
+  const searchcontainer = document.createElement("div");
+  searchcontainer.className = "search-container";
+       searchcontainer.innerHTML =   `<div class = "header-inline"><h1 class = "header"> Welcome to Anime Website</h1>
+       <p class = "description">Search for your favourite animes at a single click</p></div>
+       <div class = "header-inline"><input class='new-anime-name' placeholder='Enter Anime Name eg."Fate"'/>
+       <button class="submit-animes" onclick="getanimes()"> Search </button>
+       <button class="sort-animes" onclick="sortanimes()"> Sort by imdb rating </button></div>
+          `;
+          
+          document.body.append(searchcontainer);
+          
 }
 
-  async function getjobs() {
+
+          
+function loadanimes(animes) {
+    const animeList = document.createElement("div");
+    animeList.className = "anime-list";
+    animes.forEach((anime) => {
+      const animeContainer = document.createElement("div");
+      animeContainer.className = "anime-container";
+  
+      animeContainer.innerHTML = `
+      <img class="anime-image"  src=${anime.image_url}> </img>
+      <div class="anime-title">${anime.title}</div>
+      <div class="anime-score">imdb rating - <span>${anime.score}</span></div>
+        <div class="anime-type">type - <span>${anime.type}</span></div>
+        <p class="anime-time" >${new Date(anime.start_date).toDateString()} - ${new Date(anime.end_date).toDateString()}</p>
+      
+      `;
+  
+      animeList.append(animeContainer);
+    });
+  
+    document.body.append(animeList);
+  }
+  
+  
+  
+  async function getanimes() {
     
-      let i = localStorage.getItem("clickedpage");
-    
-   
-    
+    try{
+      const title = document.querySelector(".new-anime-name").value;
     const data = await fetch(
-      `https://www.themuse.com/api/public/jobs?page=${i}`,
+      `https://api.jikan.moe/v3/search/anime?q=${title}`,
       {
         method: "GET"
       }
     );
     
-      const jobjson = await data.json();
-    const jobs = jobjson.results;
-    loadjobs(jobs);
-    console.log(jobs[0]);
-    
+      const animejson = await data.json();
+    const animes = animejson.results;
+    localStorage.setItem("searchedanime",JSON.stringify(animes));
+    refreshanimes();
+    loadanimes(animes);
     }
 
+   catch{
+     alert("enter valid anime name? check your internet connection")
 
-
-   function loadjobs(jobs) {
-    const jobList = document.createElement("div");
-    if(document.querySelector(".job-list")!=null){
-      document.querySelector(".job-list").remove();
-     }
-    jobList.className = "job-list";
-    jobs.forEach((job) => {
-      const jobContainer = document.createElement("div");
-      jobContainer.className = "job-container";
-      if(job.locations[0]==undefined){
-        j0b.locations[0].name = "unknown";
-      }
-  
-      jobContainer.innerHTML = `
-      <div>
-      <div class="job-title">Profile : ${job.name}</div>
-      <div class="job-company">Company : ${job.company.name}</div>
-      <div class="job-level">Level : ${job.levels[0].name}</div>
-      <div class="job-location">location : ${job.locations[0].name}</div>
-      <div class="job-type">Type : ${job.type} ${job.model_type}</div>
-      <div class="job-created-time" >published date : ${new Date(job.publication_date).toDateString()}</div>
-      <a class="job-link" href = "${job.redirect_url}"> apply link</a></div>
-      `;
-      const toggledescription = document.createElement("button");
-      toggledescription.className = "toggle-desc";
-      toggledescription.innerHTML = "description";
-      const jobdescription = document.createElement("div");
-      jobdescription.className = "job-description";
-      jobdescription.innerHTML = job.contents;
-      jobContainer.append(jobdescription,toggledescription);
-      toggledescription.onclick = function (){
-        if(document.querySelector("#descid") != null){
-        document.querySelector("#descid").removeAttribute("id");}
-        jobdescription.setAttribute("id","descid");
-        toggledesc();
-      }
-  
-      jobList.append(jobContainer);
-    });
-  
-    document.body.append(jobList);
-  }
-   function toggledesc() {
-    var x =  document.querySelector("#descid")
-    if (x.style.display === "none" || x.style.display === "") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
    }
-  
- 
+   
+  }
+
+function sortanimes() {
+  const searchedanime = JSON.parse(localStorage.getItem("searchedanime"));
+  console.log(searchedanime);
+ var sortedanimes = searchedanime.sort((a,b) => b.score - a.score);
+  refreshanimes();
+    loadanimes(sortedanimes);
+    localStorage.removeItem("searchedanime");
+}
+
+  function refreshanimes() {
+    // animeList
+    if(document.querySelector(".anime-list") != undefined)
+    document.querySelector(".anime-list").remove();
+   
+  }
